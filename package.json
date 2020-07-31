@@ -1,0 +1,26 @@
+{
+  "name": "granbluefantasy-uniteandfight-manager",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "webpack --colors --config ./webpack.config.dev.js",
+    "prod": "webpack --config ./webpack.config.prod.js",
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": "https://github.com/peterchaotw/granbluefantasy-uniteandfight-manager.git",
+  "author": "Peter Chao <peter.chao.forjob@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.43",
+    "@types/react-dom": "^16.9.8",
+    "@types/webpack-dev-server": "^3.11.0",
+    "path": "^0.12.7",
+    "ts-loader": "^8.0.1",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
