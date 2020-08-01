@@ -1,7 +1,8 @@
 var path = require( 'path' );
+var webpack = require( 'webpack' );
 
 module.exports = {
-    //context: path.join( __dirname, 'src' ),
+    context: __dirname,
     entry: './src/index.tsx',
     output: {
         path: path.join( __dirname, 'dist' ),
@@ -13,10 +14,21 @@ module.exports = {
         rules: [ {
             test: /\.tsx?$/,
             exclude: /node_modules/,
-            loader: 'ts-loader'
+            loader: 'ts-loader',
+            options: {
+                transpileOnly: true
+            }
         }, ],
     },
     resolve: {
         extensions: [ '.ts', '.tsx', '.js', 'jsx' ]
     },
+    devServer: {
+        contentBase: __dirname,
+        hot: true,
+        watchContentBase: true
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ]
 };
