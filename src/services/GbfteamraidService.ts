@@ -39,7 +39,10 @@ class GbfteamraidService {
         fetch(loginUrl, {
             method: this.Api.Routes.login.method,
             headers: {
-            }
+            },
+            credentials: "same-origin",
+            mode:"cors",
+            
         }).then(function (result:any) {
             console.log(result);
         }).catch(function (err:any) {
