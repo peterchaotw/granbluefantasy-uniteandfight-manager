@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "npm run build && webpack-dev-server --open",
     "build": "webpack --colors --config ./webpack.config.js",
-    "deploy": "npm run build && gh-pages -d dist/"
+    "deploy": "git add . && git commit -m \"test\" && git push"
   },
   "repository": "https://github.com/peterchaotw/granbluefantasy-uniteandfight-manager.git",
   "author": "Peter Chao <peter.chao.forjob@gmail.com>",
