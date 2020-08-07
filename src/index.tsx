@@ -4,7 +4,7 @@ import GbfteamraidService from './services/GbfteamraidService';
 
 class App extends React.Component {
 
-    service: GbfteamraidService;
+    service: GbfteamraidService
 
     constructor(props: any, state: any) {
         super(props, state);

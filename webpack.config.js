@@ -1,13 +1,19 @@
 var path = require( 'path' );
 var webpack = require( 'webpack' );
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     context: __dirname,
-    entry: './src/index.tsx',
+    entry: [
+        'webpack-dev-server/client?http://localhost:8080',
+        // bundle the client for webpack-dev-server
+        // and connect to the provided endpoint
+        'webpack/hot/only-dev-server',
+        './src/index.tsx',
+    ],
     output: {
         path: path.join( __dirname, 'dist' ),
         filename: 'bundle.js',
-        publicPath: '/assets',
     },
     devtool: 'source-map',
     module: {
@@ -18,17 +24,25 @@ module.exports = {
             options: {
                 transpileOnly: true
             }
-        }, ],
+        }, 
+        {
+            test: /\.html$/,
+            loader: "html-loader"
+          }
+    ],
     },
     resolve: {
         extensions: [ '.ts', '.tsx', '.js', 'jsx' ]
     },
     devServer: {
-        contentBase: __dirname,
+        contentBase: path.join( __dirname, 'dist' ),
         hot: true,
         watchContentBase: true
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new HtmlWebpackPlugin({
+            template: "./src/index.html"
+          })
     ]
 };

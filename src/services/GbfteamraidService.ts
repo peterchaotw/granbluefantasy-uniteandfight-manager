@@ -1,5 +1,6 @@
 import * as url from 'url';
 import ApiInfo from '../models/ApiInfo';
+import fetch from 'cross-fetch';
 
 class GbfteamraidService {
     Api: ApiInfo = {
@@ -7,8 +8,9 @@ class GbfteamraidService {
         Routes: {
             "login":
             {
-                method: "GET",
+                method: "POST",
                 headers: [
+                    { "Cookie": "" }
                 ]
             },
             "userrank": {
@@ -36,15 +38,11 @@ class GbfteamraidService {
         debugger;
         fetch(loginUrl, {
             method: this.Api.Routes.login.method,
-            mode: "cors",
             headers: {
-                "Origin": service.Api.url,
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS"
             }
-        }).then(function (result) {
+        }).then(function (result:any) {
             console.log(result);
-        }).catch(function (err) {
+        }).catch(function (err:any) {
             service.CookieId = "";
         });
     }
